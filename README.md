@@ -1,5 +1,6 @@
 # connect-sdk
 
+[![codecov](https://codecov.io/gh/pay-api/connect-sdk/branch/master/graph/badge.svg?token=JJjrZxvxlU)](https://codecov.io/gh/pay-api/connect-sdk)
 [![NPM](https://img.shields.io/npm/v/@pay-api/connect-sdk.svg)](https://www.npmjs.com/package/@pay-api/connect-sdk)
 
 ## Install
