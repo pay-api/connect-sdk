@@ -1,0 +1,60 @@
+{
+  "name": "@pay-api/connect-sdk",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/connect-sdk.esm.js",
+  "typings": "dist/index.d.ts",
+  "registry": "https://registry.npmjs.org/",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "prepare": "if [ -z \"$GITHUB_ACTIONS\" ] && [ -z \"$CODEBUILD_BUILD_ARN\" ]; then npx husky install; fi",
+    "build": "dts build",
+    "eslint": "eslint .",
+    "depcheck": "depcheck",
+    "lint": "dts lint",
+    "start": "dts watch",
+    "test": "dts test"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "@pay-api/api": "^1.0.258"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "16.2.4",
+    "@commitlint/config-angular": "16.2.4",
+    "@tsconfig/create-react-app": "1.0.2",
+    "@tsconfig/recommended": "1.0.1",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.3",
+    "@pay-api/api": "1.0.258",
+    "dts-cli": "1.5.1",
+    "depcheck": "1.4.3",
+    "husky": "8.0.1",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "tslib": "2.4.0",
+    "typescript": "4.6.4",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
+    "@typescript-eslint/parser": "5.12.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-typescript": "3.0.0",
+    "eslint-import-resolver-typescript": "2.7.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "@testing-library/react": "13.1.1",
+    "@types/testing-library__react": "10.2.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
+  "engines": {
+    "node": ">=12"
+  }
+}

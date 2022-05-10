@@ -1,0 +1,9 @@
+ignores: [
+  '@commitlint/cli',
+  '@commitlint/config-angular',
+  '@tsconfig/create-react-app',
+  '@tsconfig/recommended',
+  '@types/react-dom',
+  'tslib',
+  'eslint-plugin-node',
+]

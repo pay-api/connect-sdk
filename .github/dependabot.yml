@@ -1,0 +1,33 @@
+version: 2
+
+registries:
+  npm-github:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{ secrets.READ_ONLY_PAT }}
+
+updates:
+  - package-ecosystem: npm
+    registries:
+      - npm-github
+    directory: /
+    schedule:
+      interval: weekly
+    assignees: [skilbjo]
+    rebase-strategy: auto
+    ignore:
+      - dependency-name: aws-sdk
+      - dependency-name: '@aws-sdk/*'
+      - dependency-name: '@commitlint/cli'
+      - dependency-name: '@commitlint/config-angular'
+      - dependency-name: husky
+      - dependency-name: '@typescript-eslint/*'
+      - dependency-name: 'eslint-*'
+      - dependency-name: 'react'
+      - dependency-name: 'react-dom'
+      - dependency-name: '@pay-api/api'
+    versioning-strategy: increase
+    open-pull-requests-limit: 2
+    commit-message:
+      prefix: fix
+      include: scope

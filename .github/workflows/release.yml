@@ -1,0 +1,58 @@
+name: release
+
+on:
+  push:
+    branches: [ master ]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  publish-artifact:
+    permissions:
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          persist-credentials: false
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Set up NPM authentication
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACTIONS_TOKEN }}" >> ~/.npmrc
+
+      - uses: cycjimmy/semantic-release-action@v3.0.0
+        id: semantic # need an `id` for output variables
+        with:
+          semantic_version: 17
+          extra_plugins: |
+            @semantic-release/git@9.0.1
+            @semantic-release/changelog@6.0.0
+            @semantic-release/exec@6.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+
+      - run: npm --no-git-tag-version version ${{ steps.semantic.outputs.new_release_version }}
+        if: steps.semantic.outputs.new_release_published == 'true'
+
+      - name: Publish to NPM
+        if: steps.semantic.outputs.new_release_published == 'true'
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          access: public
+
+      - name: codecov
+        run: |
+          if [[ $(( $RANDOM % 2 )) -eq 0 ]]; then
+            bash <(curl -s https://codecov.io/bash);
+          fi
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
