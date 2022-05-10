@@ -56,5 +56,10 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-angular"
+    ]
   }
 }
