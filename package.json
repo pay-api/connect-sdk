@@ -8,10 +8,6 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
     "prepare": "if [ -z \"$GITHUB_ACTIONS\" ] && [ -z \"$CODEBUILD_BUILD_ARN\" ]; then npx husky install; fi",
     "build": "dts build",
