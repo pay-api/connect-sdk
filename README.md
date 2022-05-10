@@ -1,5 +1,7 @@
 # connect-sdk
 
+[![NPM](https://img.shields.io/npm/v/@pay-api/connect-sdk.svg)](https://www.npmjs.com/package/@pay-api/connect-sdk)
+
 ## Install
 
 ```bash
