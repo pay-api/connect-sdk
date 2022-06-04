@@ -107,3 +107,37 @@ const App = () => {
   );
 };
 ```
+
+## create the sdk
+### for pay-api engineer's reference only
+
+in project root,
+
+```bash
+npm start
+```
+
+for local development,
+
+`example/index.tsx`:
+
+```tsx
+import { createRoot } from 'react-dom/client';
+import React, { useState } from 'react';
+// import { useConnect } from '@pay-api/connect-sdk'; <<< comment
+
+import { useConnect } from '../src/index'; // for local testing <<< uncomment
+```
+
+in seperate shell,
+
+```bash
+cd example
+npm start
+```
+
+server is now running on <http://localhost:1234>
+
+troubleshooting:
+
+- make sure to restart the vite server after making the comment change

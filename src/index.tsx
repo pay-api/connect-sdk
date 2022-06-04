@@ -47,7 +47,7 @@ export const useConnect = (props: SdkProps) => {
     const authUrl = new URL(CONNECT_URI);
 
     if (clientId) authUrl.searchParams.append('client_id', clientId);
-    authUrl.searchParams.append('scopes', scopes.join(' '));
+    authUrl.searchParams.append('scope', scopes.join(' '));
     authUrl.searchParams.append('redirect_uri', DEFAULT_REDIRECT_URI);
     authUrl.searchParams.append('mode', mode);
     authUrl.searchParams.append('app_type', 'spa');
